@@ -19,30 +19,43 @@ app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", (req, res)=>{
-    res.render("index", {title: "Chess game"});
+    res.render("index", {title: "Home"});
+});
+
+app.get("/newgame", (req, res)=>{
+    res.render("newgame", {title: "Chess game"});
+});
+
+app.get("/tutorial", (req, res)=>{
+    res.render("tutorial", {title: "Tutorial"});
 });
 
 
 io.on("connection", function(uniquesocket){
-    console.log("Connected");
 
     if(!players.white){
         players.white = uniquesocket.id;
         uniquesocket.emit("playerRole", "w");
+        console.log("Player 1 Connected");
     } 
     else if(!players.black){
         players.black = uniquesocket.id;
         uniquesocket.emit("playerRole", "b");
+        console.log("Player 2 Connected");
     }
     else{
         uniquesocket.emit("spectatorRole");
+        console.log("Spectator Connected");
     }
+    
 
     uniquesocket.on("disconnect", function(){
         if(uniquesocket.id === players.white){
+            console.log("Player 1 Disconnected");
             delete players.white;
         }
         else if(uniquesocket.id === players.black){
+            console.log("Player 2 Disconnected");
             delete players.black;
         }
     });

@@ -1,99 +1,94 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-
-        
-        .chessboard {
-            display: grid;
-            grid-template-columns: repeat(8, minmax(0, 1fr));
-            grid-template-rows: repeat(8, minmax(0, 1fr));
-            width: 400px;
-            height: 400px;
-            transform: rotate(0deg);
-        }
-
-        .piece.white {
-            color: white;
-            filter: drop-shadow(0 0 2px rgba(0, 0, 0, 1));
-        }
-
-        .piece.black {
-            color: black;
-        }
-
-        .flipped {
-            transform: rotate(180deg);
-        }
-
-        .square {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .square.light {
-            background-color: #f0d9b5;
-        }
-
-        .square.dark {
-            background-color: #b58863;
-        }
-
-        .piece {
-            font-size: 36px;
-            cursor: pointer;
-        }
-
-        .piece.draggable {
-            cursor: grab;
-        }
-
-        .dragging {
-            opacity: 0.5;
-        }
-
-        /* Rotate pieces for black player */
-        .flipped .piece {
-            transform: rotate(180deg);
-        }
-
-        @media (max-width: 640px) {
-            .chessboard {
-                width: 90vw;
-                height: 90vw;
-                max-width: 400px;
-                max-height: 400px;
-            }
-
-            .piece {
-                font-size: 8vw;
-            }
-        }
-
-        /* Prevent zooming on mobile devices */
-        @viewport {
-            width: device-width;
-            zoom: 1.0;
-        }
-
-        @-ms-viewport {
-            width: device-width;
-        }
-    </style>
+    <title>Home</title>
 </head>
-<body>
-    <div class="w-full h-screen flex items-center justify-center bg-zinc-900">
-        <div class="chessboard w-96 h-96 bg-red-800"></div>
-    </div>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js" integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js" integrity="sha512-xRllwz2gdZciIB+AkEbeq+gVhX8VB8XsfqeFbUh+SzHlN96dEduwtTuVuc2u9EROlmW9+yhRlxjif66ORpsgVA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="/javascripts/chessgame.js"></script>
+    html, body{
+        height: 100%;
+        width: 100%;
+        background-color: rgb(24 24 27);
+    }
+
+    h1{
+        position: absolute;
+        color: #A1CF5F;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        top: 15%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    #ng{
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 1.5vw 4vw;
+        background-color: #A1CF5F;
+        color: white;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 3vh;
+        font-weight: bold;
+        border: none;
+        border-bottom: 3px solid #558C44;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+    #htp{
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 1.5vw 4vw;
+        background-color: #A1CF5F;
+        color: white;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 3vh;
+        font-weight: bold;
+        border: none;
+        border-bottom: 3px solid #558C44;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+    
+    h3{
+        width: 80%;
+        color: white;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        position: absolute;
+        bottom: 5%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+
+    span{
+        color: red;
+    }
+
+
+</style>
+<body>
+    <h1>Welcome to Chess by SK</h1>
+
+    <form action="/newgame">
+        <input id="ng" type="submit" value="New Game">
+    </form>
+
+    <form action="/tutorial">
+        <input id="htp" type="submit" value="How to play">
+    </form>
+
+    <h3>The game is still <span>UNDER DEVELOPMENT</span>. Please Co-operate if you see any bugs or something goes wrong. <br>Thank You</h3>
+
 </body>
 </html>
